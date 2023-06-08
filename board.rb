@@ -1,5 +1,6 @@
 require_relative "tile"
 
+
 class Board
   def self.empty_grid
     Array.new(9) do
@@ -23,13 +24,13 @@ class Board
 
   def [](pos)
     x, y = pos
-    grid[x][y]
+    @grid[x][y]
   end
 
   def []=(pos, value)
     x, y = pos
-    tile = grid[x][y]
-    tile.value = value
+    tiles = @grid[x][y]
+    tiles.value = value
   end
 
   def columns
@@ -38,17 +39,17 @@ class Board
 
   def render
     puts "  #{(0..8).to_a.join(" ")}"
-    grid.each_with_index do |row, i|
+    @grid.each_with_index do |row, i|
       puts "#{i} #{row.join(" ")}"
     end
   end
 
   def rows
-    grid
+    @grid
   end
 
   def size
-    grid.size
+    @grid.size
   end
 
   def solved?
